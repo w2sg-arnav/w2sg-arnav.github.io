@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arnav Sonavane - Academic Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #000;
+            --secondary-color: #666;
+            --background-color: #fff;
+            --hover-color: #f5f5f5;
+            --spacing-unit: 2rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--primary-color);
+            background: var(--background-color);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-unit);
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-bottom: var(--spacing-unit);
+        }
+
+        h1, h2, h3 {
+            font-weight: 500;
+            margin-bottom: var(--spacing-unit);
+        }
+
+        h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: calc(var(--spacing-unit) * 2);
+        }
+
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+        }
+
+        .social-links {
+            margin-top: var(--spacing-unit);
+        }
+
+        .social-links a {
+            margin-right: 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-unit);
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        .card {
+            padding: var(--spacing-unit);
+            border: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            background: var(--hover-color);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: var(--spacing-unit);
+        }
+
+        .experience-item {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: var(--spacing-unit);
+            margin-bottom: var(--spacing-unit);
+            padding: var(--spacing-unit);
+            border: 1px solid #eee;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .experience-item {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="/placeholder.svg?height=50&width=50" alt="Logo" class="logo">
+
+    <section class="hero">
+        <h1>Arnav Sonavane</h1>
+        <p>I research AI and Medical Imaging.</p>
+        <div class="social-links">
+            <a href="https://linkedin.com/in/yourprofile">LinkedIn</a>
+            <a href="https://github.com/yourusername">GitHub</a>
+            <a href="https://scholar.google.com/citations?user=yourid">Google Scholar</a>
+        </div>
+    </section>
+
+    <section id="research">
+        <h2>Research</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="/placeholder.svg?height=200&width=300" alt="Medical Imaging Research" class="project-image">
+                <h3>Medical Imaging & AI</h3>
+                <p>Research on biomarker identification for lung cancer, achieving 99% accuracy on plasma samples.</p>
+            </div>
+            <div class="card">
+                <img src="/placeholder.svg?height=200&width=300" alt="LLM Research" class="project-image">
+                <h3>LLM Inference Optimization</h3>
+                <p>Working on LLM inference optimization at Harvard University, quantifying speedups achieved.</p>
+            </div>
+            <div class="card">
+                <img src="/placeholder.svg?height=200&width=300" alt="GPU Computing" class="project-image">
+                <h3>GPU-Accelerated Computing</h3>
+                <p>Developing GPU accelerated containers for medical imaging at JuliaHealth.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="/placeholder.svg?height=200&width=300" alt="Biomarker Project" class="project-image">
+                <h3>Novel Biomarkers Detection</h3>
+                <p>Computational identification and validation of novel biomarkers for lung cancer with 99% accuracy.</p>
+            </div>
+            <div class="card">
+                <img src="/placeholder.svg?height=200&width=300" alt="Synthia Project" class="project-image">
+                <h3>Synthia</h3>
+                <p>Synthetic data generation platform using Phi3 & AI Workbench for custom dataset creation.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="experience-item">
+            <div>
+                <h3>Harvard University</h3>
+                <p>09/2024-Present</p>
+            </div>
+            <div>
+                <h3>Research Intern</h3>
+                <p>LLM inference optimization for VIDUR under Professor Devashree Tripathy.</p>
+            </div>
+        </div>
+        <div class="experience-item">
+            <div>
+                <h3>Julia Health</h3>
+                <p>09/2024-Present</p>
+            </div>
+            <div>
+                <h3>Machine Learning Intern</h3>
+                <p>Developing GPU accelerated containers for medical imaging.</p>
+            </div>
+        </div>
+        <div class="experience-item">
+            <div>
+                <h3>National Institute of Health</h3>
+                <p>08/2024-Present</p>
+            </div>
+            <div>
+                <h3>Research Intern</h3>
+                <p>Biomarker identification for lung cancer with Dr. Chris Grunseich.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="publications">
+        <h2>Publications</h2>
+        <div class="card">
+            <h3>Integration of IoT and Quantum Computing: Revolutionizing Manufacturing</h3>
+            <p>IGI Global, Chapter 16</p>
+        </div>
+        <div class="card">
+            <h3>HepaScope: Densely Connected UNet for CT Volume-Based Liver and Tumor Segmentation</h3>
+            <p>IEEE International Conference on Bioinformatics and Computational Biology</p>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <div class="experience-item">
+            <div>
+                <h3>University of Mumbai</h3>
+                <p>2023-2027</p>
+            </div>
+            <div>
+                <h3>B.Tech in Electronics and Computer Science</h3>
+                <p>GPA: 7.9/10.0</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
