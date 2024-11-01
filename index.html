@@ -124,7 +124,12 @@
                 <h2 class="section-title">Contact</h2>
 
                 <div class="contact__container bd-grid">
-                    <form action="" class="contact__form">
+                    <form action="https://formspree.io/f/yourFormId" method="POST" class="contact__form">
+                      <input type="text" name="name" placeholder="Name" class="contact__input" required>
+                      <input type="email" name="email" placeholder="Email" class="contact__input" required>
+                      <textarea name="message" placeholder="Your message" cols="0" rows="10" class="contact__input" required></textarea>
+                      <button type="submit" class="contact__button button">Send</button>
+                     </form>
                         <input type="text" placeholder="Name" class="contact__input">
                         <input type="mail" placeholder="Email" class="contact__input">
                         <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
@@ -136,7 +141,7 @@
 
         <!--===== FOOTER =====-->
         <footer class="footer">
-            <p class="footer__title">Marlon</p>
+            <p class="footer__title">arnav</p>
             <div class="footer__social">
                 <a href="https://www.instagram.com/arnav_mcmxvi/" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
                 <a href="https://x.com/arnxv_eh" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
