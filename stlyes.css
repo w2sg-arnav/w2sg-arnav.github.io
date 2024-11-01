@@ -1,0 +1,130 @@
+:root {
+    --primary-color: #000;
+    --secondary-color: #666;
+    --background-color: #fff;
+    --border-color: #eee;
+    --spacing-unit: 2rem;
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--primary-color);
+    background: var(--background-color);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-unit);
+}
+
+header {
+    margin-bottom: var(--spacing-unit);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+h1, h2, h3 {
+    font-weight: 500;
+    margin-bottom: var(--spacing-unit);
+}
+
+h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-top: calc(var(--spacing-unit) * 2);
+}
+
+#hero {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+#hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+#hero p {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+}
+
+.social-links {
+    margin-top: var(--spacing-unit);
+}
+
+.social-links a {
+    margin-right: 1rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-unit);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+.card {
+    padding: var(--spacing-unit);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    background: var(--border-color);
+}
+
+.publication-list, .education-list, .experience-list {
+    display: grid;
+    gap: var(--spacing-unit);
+}
+
+.publication, .education-item, .experience-item {
+    padding: var(--spacing-unit);
+    border: 1px solid var(--border-color);
+}
+
+.year, .degree, .company {
+    font-weight: bold;
+}
+
+.tag {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    background-color: var(--border-color);
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    #hero h1 {
+        font-size: 3rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
