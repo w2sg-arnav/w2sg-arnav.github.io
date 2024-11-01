@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  
+  <title>Daniel Grahn // TrojaNow</title>
+
+  <!--Import materialize.css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
+  
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.0/less.js"></script>
+
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-wrapper light-blue accent-3">
+      <a href="#!" class="brand-logo center">
+        <img src="img/icon.png"/> TrojaNow
+      </a>
+    </div>
+  </nav>
+  
+  <div class="container">
+  
+      <p></p>
+      <div class="card grey lighten-4">
+      <div class="card-content">
+        <span class="card-title black-text">CSCI-578 Project</span>
+        <p>
+          This document is the final report for the term project for
+          <a href="http://sunset.usc.edu/classes/cs578_2015/">CSCI-578</a>. The
+          project is not running anywhere and must be download and compiled by
+          the user. This is a proof of concept project and is not intended to be
+          a final project.</p>
+      </div>
+      <div class="card-action">      
+        <a class="" href="https://github.com/dgrahn/csci578">
+          <i class="mdi-action-launch left"></i>
+          View the Source on GitHub
+        </a>
+      </div>
+    </div>
+    
+    <h2 class="header">Demo</h2>
+    
+    <div class="z-depth-2 video">
+      <iframe src="https://www.youtube.com/embed/Bt34_Ew6wqs" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
+    <h2 class="header">Architecture</h2>
+    
+    <div class="card grey lighten-4">
+      <div class="card-content">
+        <span class="card-title black-text">Not Comprehensive</span>
+        <p>
+          The following section does not contain a comprehensive description of
+          all the modifications to the architecture. Many of the API methods
+          were modified slightly to account for different Android requirements.
+          To view the original architecture, click the link below.</p>
+      </div>
+      <div class="card-action">      
+        <a class="" href="https://docs.google.com/document/d/1Wye5rncmnlcQXpNucB-7W6ioE1st49KK-3eWlgMPcsQ/edit?usp=sharing">
+          <i class="mdi-action-launch left"></i>
+          Original Architecture
+        </a>
+      </div>
+    </div>
+      
+      <p class="flow-text">
+        Over the course of the project, the architecture of TrojaNow evolved.
+        This is a result of the mapping problem between the original architecture
+        and the Android SDK. Modifications were made so that mapping would be
+        easier and more intuitive.</p>
+        
+      <h4>Reduction of Functionality</h4>
+
+      <p class="flow-text">
+        Due to the time-constraints on the project, not all of the original
+        functionality was able to be implemented. Below is a list of the
+        components their current implmentations.</p>
+      
+      <div class="row">
+        <div class="col s12 m4">
+          <h5>Client & Server</h5>
+          <ul class="collection">
+            <li class="collection-item">Sign Up</li>
+            <li class="collection-item">Log In</li>
+            <li class="collection-item">Log Out</li>
+            <li class="collection-item">Feed</li>
+            <li class="collection-item">Posts</li>
+            <li class="collection-item">Anonymous Posts</li>
+            <li class="collection-item">Environments</li>
+            <li class="collection-item">Emotions</li>
+          </ul>
+        </div>
+        <div class="col s12 m4">        
+          <h5>Server Only</h5>
+          <ul class="collection">
+            <li class="collection-item">Audiences</li>
+            <li class="collection-item">Pals</li>
+            <li class="collection-item">Chats</li>
+            <li class="collection-item">Profile Pictures</li>
+            <li class="collection-item">Alerts</li>
+            <li class="collection-item">Subscriptions</li>
+            <li class="collection-item">Remotions</li>
+          </ul>
+        </div>
+        <div class="col s12 m4">
+          <h5>No Support</h5>
+          <ul class="collection">
+            <li class="collection-item">Creating Reports</li>
+            <li class="collection-item">Searching</li>
+            <li class="collection-item">Updating Picture</li>
+          </ul>
+        </div>
+      </div>
+        
+      <h4>Login</h4>
+      <p class="flow-text">
+        Login functionality was originally expected to be provided using OAuth 2.0
+        through Google+ and Facebook logins. Unfortunately, this functionality
+        proved to be to time-consuming to be implemented for the project. As a
+        result users are able to authenticate with their own username and password.
+        Transaction-Level authentication takes place through the use of
+        token-based authentication.</p>
+        
+      <h4>Anonymous Posts</h4>
+      <p class="flow-text">
+        Anonymous posts were originally slated to be marked as anonymous as part
+        of the post model. Instead, anonymous posts are now assigned to a special
+        user. This allows posts to be anonymous even from the server.</p>
+      
+      <h4>Static Managers</h4>
+      <p class="flow-text">
+        Android screens are dividided into activities and fragments. Passing
+        data between these screens can be complicated. In order to save time on
+        development, the different <em>managers</em> in TrojaNow were converted
+        for static use. This was acheived by creating a constant in each of the
+        managers and hiding the constructors.</p>
+        
+      <h4>Account Manager</h4>
+      <p class="flow-text">
+        The initial intention in the architecture was to store the current user
+        in the authentication manager. During implementation, the storage of the
+        user was moved to the Android Account Manager. This allows the account to
+        be displayed in the Android Settings application.</p>
+         
+    
+    <h2 class="header">Implementation Details</h2>
+      <p class="flow-text">
+        In order to account for the custom functionality in TrojaNow, a custom
+        server was written. This server was written in Rails. The following
+        commands are necessary to start the server.</p>
+
+<pre>
+<span># Reset the database</span>
+rake db:drop
+rake db:create
+rake db:migrate
+
+<span># Start the Server</span>
+rails s
+</pre>
+
+      <p class="flow-text">
+        Development was performed on a small test server. To run the Android app,
+        you will need to recompile the application with the appropriate server.
+        To do this, change the setting specified below.</p>
+
+<pre>
+<span>// us.grahn.trojanow.logic.Utilities.java</span>
+private static final String SERVER = "http://[YOUR SERVER IP]:3000/";
+</pre>
+    
+    <h2 class="header">Style</h2>
+      <p class="flow-text">
+        One of the primary reasons for choosing the Android SDK was the ability to
+        conform with Google's <a href="http://www.google.com/design/spec/material-design/introduction.html">Material Design</a>.
+        This allows for advanced animations in the GUI with minimal effort. Frameworks
+        built on-top of the SDK aren't able to take advantage of Android 5.0+'s
+        special handling of animations.</p>
+      
+      <p class="flow-text">
+        Choosing this approach allows the application to blend-in with the system
+        applications with which the user is familiar. This cuts down on the
+        learning-curve.</p>
+    
+    <h2 class="header">Lessons</h2>
+    
+      <div class="z-depth-2 video">
+        <iframe src="https://www.youtube.com/embed/fHHTAggSfH4" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+      <h4>Mapping is Hard!</h4>
+        <p class="flow-text">
+          One of the hardest parts of this project was conforming to the original
+          architecture. Due to constraints placed upon interactions by Android, it
+          simply wasn't possible at certain spots.</p>
+      
+      <h4>Keep the Target in Mind</h4>
+        <p class="flow-text">
+          If your intended target already has support for a particular architecture,
+          think long and hard before differing form that architecture. Working
+          against a target is much harder than working with it.</p>
+          
+        <p class="flow-text">
+          If I were to redo the TrojaNow architecture, I would make modifications
+          so that the application could map more directly to the Android SDK. This
+          would allow for faster coding with less hassle.</p>
+
+      <h4>Don't Live in an Ivory Tower</h4>
+        <p class="flow-text">
+          If an architect isn't doing development, they need to frequently hear
+          the feedback of the developers. As the architect of my project, it
+          hurt every time I had to change the architecture. At the same time, I
+          was occassionally frustrated by limitations of the architecture and
+          conflicts with the target.</p>
+          
+        <p class="flow-text">
+          Being aware of these conflicts allowed me to make executive decisions
+          about how and where to change the architecture. If another target is
+          added, I would recommend creating a modified architecture for the new
+          target. Most parts of the architecture would stay the same, but some
+          may have to change.</p>
+    
+    <h2 class="header">Screenshots</h2>
+    
+      <div class="card screenshot">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="img/screenshot/feed.png">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Viewing Posts <i class="mdi-navigation-more-vert right"></i></span>
+          <p>An easy way to catch up with your favorite pals.</p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Feed <i class="mdi-navigation-close right"></i></span>
+          <p>The first screen you will see is a feed of all the recent posts.
+            Each post will either be anonymous or associated with a user. The posts
+            will be timestamped for easy reference and may include emotions or
+            environments.</p>
+          
+          <p>
+            If you want to create a new post, just tap the "(+)" floating action button.</p>
+        </div>
+      </div>
+    
+      <div class="card screenshot">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="img/screenshot/newpost.png">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Creating Posts <i class="mdi-navigation-more-vert right"></i></span>
+          <p>A streamlined interface for sharing thoughts.</p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Creating Posts <i class="mdi-navigation-close right"></i></span>
+          <p>
+            Creating a new post is a simple process accessed from the "(+)" floating
+            action button.</p>
+            
+          <p>The interface allows you to add emotions and environments to with
+            minimal interaction. Don't want the post to associated with you? Mark
+            it as anonymous with the touch of a button.</p>
+        </div>
+      </div>
+    
+      <div class="card screenshot">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="img/screenshot/invalid-name.png">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Handling Errors <i class="mdi-navigation-more-vert right"></i></span>
+          <p>An informative message for every important error.</p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Handling Errors <i class="mdi-navigation-close right"></i></span>
+          <p>Error handling is built into all network communications of
+             TrojaNow. Whenever an error occurs, a message is displayed. This
+             message can be customized on the server without modification to the
+             client.</p>
+          <p>In the screenshot, a user has entered an invalid name to the sign
+             up form. Instead of having vague feedback or receiving an error,
+             they are shown a helpful dialog.</p>
+        </div>
+      </div>
+      
+      <div class="card screenshot">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="img/screenshot/login.png">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Logging In <i class="mdi-navigation-more-vert right"></i></span>
+          <p>A simple way to verify your identity with the server.</p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Logging In <i class="mdi-navigation-close right"></i></span>
+          <p>Authentication with the server couldn't be easier with this form.
+             Password managers such as LastPass will recognize the form and
+             auto-complete credentials as appropriate.</p>
+        </div>
+      </div>
+      
+      <div class="card screenshot">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="img/screenshot/signup.png">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">Signing Up <i class="mdi-navigation-more-vert right"></i></span>
+          <p>A new account without leaving the mobile application.</p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">Signing Up <i class="mdi-navigation-close right"></i></span>
+          <p>Signing up for a new account is easy to do with the sign up form.
+             Just a few entries allows you to create a new account without leaving
+             the mobile application.</p>
+          <p>Don't worry about messing up a field. We will warn you!.</p>
+        </div>
+      </div>
+
+  </div>
+
+  <!--Import jQuery before materialize.js-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
