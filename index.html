@@ -124,18 +124,13 @@
                 <h2 class="section-title">Contact</h2>
 
                 <div class="contact__container bd-grid">
-                    <form action="https://formspree.io/f/mvgokrkd" method="POST">
-                       <label>
-                         Your email:
-                         <input type="email" name="email">
-                       </label>
-                       <label>
-                       Your message:
-                       <textarea name="message"></textarea>
-                      </label>
-  
-  <button type="submit">Send</button>
+                    <form action="https://formspree.io/f/mvgokrkd" method="POST" class="contact__form">
+    <input type="text" name="name" placeholder="Name" class="contact__input" required>
+    <input type="email" name="email" placeholder="Email" class="contact__input" required>
+    <textarea name="message" placeholder="Your message" cols="0" rows="10" class="contact__input" required></textarea>
+    <button type="submit" class="contact__button button">Send</button>
 </form>
+
                 </div>
             </section>
         </main>
